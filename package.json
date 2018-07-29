@@ -1,0 +1,25 @@
+{
+  "name": "wallmart-webapp-e2e-test",
+  "version": "1.0.0",
+  "description": "End to end test repo for wallmart web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipranavpatel/wallmart-webapp-e2e-test.git"
+  },
+  "author": "Pranav Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ipranavpatel/wallmart-webapp-e2e-test/issues"
+  },
+  "homepage": "https://github.com/ipranavpatel/wallmart-webapp-e2e-test#readme",
+  "dependencies": {
+    "webdriverio": "^4.13.1"
+  },
+  "devDependencies": {
+    "wdio-mocha-framework": "^0.6.2"
+  }
+}
