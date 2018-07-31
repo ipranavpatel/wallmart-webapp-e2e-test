@@ -1,44 +1,38 @@
-const itemPage = require('../../test/pageObjects/item.page.js');
+const assert = require('assert');
+
+const CommonPage = require('../../test/pageObjects/common.page.js');
+const commonPage = new CommonPage();
+
+const ItemPage = require('../../test/pageObjects/item.page.js');
+const itemPage = new ItemPage();
 
 beforeEach(function(){
-    //  Pre-conditions
-    //  Navigate to https://www.wallmart.ca/en
-    //  Assert on url and content
+    // Navigate to given item web page
+    // https://www.walmart.ca/en/ip/intex-metal-frame-pool/6000166640889
+    itemPage.goToItemPage('intex-metal-frame-pool/6000166640889');
 });
 
 describe('Product identifiers should be displayed correctly', function() {
-    it('Navigate Intex Swimming Pool item web page', function() {
-        // Navigate to given item web page
-        // https://www.walmart.ca/en/ip/intex-metal-frame-pool/6000166640889
-        // Wait for page to load
-    });
 
+    // Assert each product identifiers value with database value
     it('Assert the product identifiers', function(){
-        // Assert each product identifiers value with database value
 
         //  Assume database query / api returns an object
-        //  resp = {
-        //     'itemNum': '31321863, 30885665',
-        //     'modelNum': '28211MW',
-        //     'SKU' :  '10320406',
-        //      'UPC' : '7825728211'
-        //      };
+        const  resp = {
+             'itemNum': '31321863, 30885665',
+             'modelNum': '28211MW',
+             'SKU' :  '10320406',
+              'UPC' : '7825728211'
+        };
 
-        // elements Selector of Alert page are defined on ../test/pageObjects/alert.page.js
-
-        // assert.strictEqual(AlertPage.identifiers.itemNum, resp.itemNum);
-        // assert.strictEqual(AlertPage.identifiers.modelNum, resp.modelNum);
-        // assert.strictEqual(AlertPage.identifiers.SKU, resp.SKU);
-        // assert.strictEqual(AlertPage.identifiers.UPC, resp.UPC);
+        assert.strictEqual(commonPage.waitAndGetText(itemPage.elementsMap['item.identifiers.itemNum']), resp.itemNum);
+        assert.strictEqual(commonPage.waitAndGetText(itemPage.elementsMap['item.identifiers.modelNum']), resp.modelNum);
+        assert.strictEqual(commonPage.waitAndGetText(itemPage.elementsMap['item.identifiers.SKU']), resp.SKU);
+        assert.strictEqual(commonPage.waitAndGetText(itemPage.elementsMap['item.identifiers.UPC']), resp.UPC);
     });
 });
 
 describe('Product specifications should be displayed correctly', function() {
-    it('Navigate Intex Swimming Pool item web page', function() {
-        // Navigate to given item web page
-        // https://www.walmart.ca/en/ip/intex-metal-frame-pool/6000166640889
-        // Wait for page to load
-    });
 
     it('Assert the product specifications', function(){
         // Assert each product specification value with database value
@@ -59,11 +53,6 @@ describe('Product specifications should be displayed correctly', function() {
 });
 
 describe('User should able to write a review', function() {
-    it('Navigate Intex Swimming Pool item web page', function() {
-        // Navigate to given item web page
-        // https://www.walmart.ca/en/ip/intex-metal-frame-pool/6000166640889
-        // Wait for page to load
-    });
 
     it('Click on Write a review', function(){
         // browser.cick(ItemPage.addReviewButton);
